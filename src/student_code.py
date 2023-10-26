@@ -44,6 +44,7 @@ def one_test(weights, bias, test_data):
 
 def part_one_classifier(data_train, data_test):
 	weights, bias = one_train(data_train)
+	print(weights)
 	results = one_test(weights, bias, data_test)
 	return results
 
@@ -57,8 +58,11 @@ def multi_train(train_data):
 		for data in train_data:
 			# preds are empty, need one for each option
 			activations = []
+			# print(f"weights: {weights}")
 			for weight in weights:
 				activations.append(weight[0]*data[0] + weight[1]*data[1])
+			# print("ACTIVATIONS")
+			# print(activations)
 			# find the predicted value
 			pred = activations.index(max(activations))
 			# if the predicted value is wrong update weights
@@ -84,5 +88,6 @@ def multi_test(weights, test_data):
 
 def part_two_classifier(data_train, data_test):
 	weights = multi_train(data_train)
+	print(weights)
 	results = multi_test(weights, data_test)
 	return results
